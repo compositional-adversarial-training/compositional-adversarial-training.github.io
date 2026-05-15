@@ -415,3 +415,197 @@
             </tbody>
           </table>
         </div>
+
+        <!-- Compositional results -->
+        <h3 class="title is-4 section-heading">Compositional Attack Results (T=2)</h3>
+        <div class="content">
+          <p>
+            The advantage of CAT becomes clearest in the compositional setting, where the adversary applies a
+            two-step attack sequence and must model both attack identity and order. Gains are concentrated on
+            harder mixed and repeated attack pairs.
+          </p>
+        </div>
+
+        <h4 class="title is-5">SA-1B (In-Distribution)</h4>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th rowspan="2">Model (bits)</th>
+                <th colspan="2">Val+Val</th>
+                <th colspan="2">Val+Comp</th>
+                <th colspan="2">Val+Geom</th>
+                <th colspan="2">Comp+Comp</th>
+                <th colspan="2">Comp+Geom</th>
+                <th colspan="2">Geom+Geom</th>
+                <th colspan="2">Overall</th>
+              </tr>
+              <tr>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>InvisMark (100)</td>
+                <td>0.898</td><td>71.44</td><td>0.652</td><td>27.15</td>
+                <td>0.875</td><td>68.63</td><td>0.474</td><td>0.85</td>
+                <td>0.603</td><td>21.75</td><td>0.888</td><td>70.52</td>
+                <td>0.813</td><td>57.92</td>
+              </tr>
+              <tr>
+                <td>TrustMark (100)</td>
+                <td>0.957</td><td>86.21</td><td>0.965</td><td>88.49</td>
+                <td>0.786</td><td>52.86</td><td>0.974</td><td>90.92</td>
+                <td>0.779</td><td>50.97</td><td>0.708</td><td>36.58</td>
+                <td>0.834</td><td>62.14</td>
+              </tr>
+              <tr>
+                <td>MBRS (256)</td>
+                <td>0.917</td><td>182.87</td><td>0.836</td><td>130.67</td>
+                <td>0.602</td><td>41.86</td><td>0.774</td><td>90.86</td>
+                <td>0.554</td><td>15.81</td><td>0.495</td><td>0.98</td>
+                <td>0.653</td><td>60.74</td>
+              </tr>
+              <tr>
+                <td>VideoSeal 0.0 (96)</td>
+                <td>0.972</td><td>83.44</td><td>0.985</td><td>87.84</td>
+                <td>0.961</td><td>78.08</td><td>0.992</td><td>91.40</td>
+                <td>0.974</td><td>82.79</td><td>0.930</td><td>72.83</td>
+                <td>0.961</td><td>77.79</td>
+              </tr>
+              <tr class="cat-row">
+                <td>+ CAT</td>
+                <td>0.988</td><td>90.30</td><td>0.995</td><td>93.28</td>
+                <td>0.979</td><td>86.26</td><td>0.999</td><td>95.34</td>
+                <td>0.990</td><td>90.79</td><td>0.935</td><td>78.05</td>
+                <td><strong>0.978</strong></td><td><strong>86.03 ↑10.6%</strong></td>
+              </tr>
+              <tr>
+                <td>VideoSeal 1.0 (256)</td>
+                <td>0.875</td><td>121.35</td><td>0.887</td><td>127.69</td>
+                <td>0.827</td><td>95.41</td><td>0.897</td><td>134.39</td>
+                <td>0.858</td><td>109.22</td><td>0.799</td><td>86.78</td>
+                <td>0.829</td><td>96.13</td>
+              </tr>
+              <tr class="cat-row">
+                <td>+ CAT</td>
+                <td>0.840</td><td>121.57</td><td>0.891</td><td>145.41</td>
+                <td>0.826</td><td>109.69</td><td>0.938</td><td>172.97</td>
+                <td>0.894</td><td>141.66</td><td>0.825</td><td>111.74</td>
+                <td><strong>0.827</strong></td><td><strong>108.30 ↑12.7%</strong></td>
+              </tr>
+              <tr>
+                <td>PixelSeal (128)</td>
+                <td>0.964</td><td>106.45</td><td>0.977</td><td>112.06</td>
+                <td>0.954</td><td>100.25</td><td>0.987</td><td>117.75</td>
+                <td>0.968</td><td>106.43</td><td>0.922</td><td>93.04</td>
+                <td>0.952</td><td>98.76</td>
+              </tr>
+              <tr class="cat-row">
+                <td>+ CAT</td>
+                <td>0.974</td><td>113.81</td><td>0.990</td><td>121.27</td>
+                <td>0.964</td><td>107.65</td><td>0.998</td><td>126.29</td>
+                <td>0.982</td><td>116.19</td><td>0.928</td><td>100.21</td>
+                <td><strong>0.965</strong></td><td><strong>107.73 ↑9.1%</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="title is-5" style="margin-top: 1.5rem;">CLIC (Out-of-Distribution)</h4>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th rowspan="2">Model (bits)</th>
+                <th colspan="2">Val+Val</th>
+                <th colspan="2">Val+Comp</th>
+                <th colspan="2">Val+Geom</th>
+                <th colspan="2">Comp+Comp</th>
+                <th colspan="2">Comp+Geom</th>
+                <th colspan="2">Geom+Geom</th>
+                <th colspan="2">Overall</th>
+              </tr>
+              <tr>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+                <th>Bit acc. ↑</th><th>Cap. ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>InvisMark (100)</td>
+                <td>0.902</td><td>72.69</td><td>0.653</td><td>27.61</td>
+                <td>0.875</td><td>68.97</td><td>0.474</td><td>0.85</td>
+                <td>0.600</td><td>21.29</td><td>0.883</td><td>69.50</td>
+                <td>0.812</td><td>57.96</td>
+              </tr>
+              <tr>
+                <td>TrustMark (100)</td>
+                <td>0.964</td><td>88.76</td><td>0.968</td><td>89.85</td>
+                <td>0.790</td><td>53.95</td><td>0.974</td><td>91.65</td>
+                <td>0.782</td><td>51.93</td><td>0.710</td><td>37.13</td>
+                <td>0.838</td><td>63.39</td>
+              </tr>
+              <tr>
+                <td>MBRS (256)</td>
+                <td>0.927</td><td>190.84</td><td>0.851</td><td>140.04</td>
+                <td>0.608</td><td>45.61</td><td>0.791</td><td>100.83</td>
+                <td>0.559</td><td>18.03</td><td>0.496</td><td>0.97</td>
+                <td>0.660</td><td>65.18</td>
+              </tr>
+              <tr>
+                <td>VideoSeal 0.0 (96)</td>
+                <td>0.978</td><td>86.28</td><td>0.961</td><td>81.15</td>
+                <td>0.968</td><td>80.81</td><td>0.937</td><td>77.05</td>
+                <td>0.947</td><td>75.52</td><td>0.937</td><td>74.67</td>
+                <td>0.957</td><td>77.31</td>
+              </tr>
+              <tr class="cat-row">
+                <td>+ CAT</td>
+                <td>0.992</td><td>91.87</td><td>0.991</td><td>91.84</td>
+                <td>0.984</td><td>88.57</td><td>0.977</td><td>89.05</td>
+                <td>0.988</td><td>89.97</td><td>0.940</td><td>79.73</td>
+                <td><strong>0.981</strong></td><td><strong>87.34 ↑13.0%</strong></td>
+              </tr>
+              <tr>
+                <td>VideoSeal 1.0 (256)</td>
+                <td>0.881</td><td>124.44</td><td>0.886</td><td>127.38</td>
+                <td>0.832</td><td>98.03</td><td>0.895</td><td>133.09</td>
+                <td>0.854</td><td>106.99</td><td>0.800</td><td>87.42</td>
+                <td>0.831</td><td>96.97</td>
+              </tr>
+              <tr class="cat-row">
+                <td>+ CAT</td>
+                <td>0.852</td><td>128.33</td><td>0.869</td><td>136.19</td>
+                <td>0.839</td><td>117.17</td><td>0.909</td><td>157.25</td>
+                <td>0.878</td><td>134.59</td><td>0.831</td><td>115.09</td>
+                <td><strong>0.827</strong></td><td><strong>109.24 ↑12.7%</strong></td>
+              </tr>
+              <tr>
+                <td>PixelSeal (128)</td>
+                <td>0.973</td><td>111.00</td><td>0.939</td><td>98.69</td>
+                <td>0.961</td><td>103.61</td><td>0.902</td><td>90.40</td>
+                <td>0.926</td><td>92.72</td><td>0.927</td><td>94.93</td>
+                <td>0.941</td><td>96.20</td>
+              </tr>
+              <tr class="cat-row">
+                <td>+ CAT</td>
+                <td>0.977</td><td>115.17</td><td>0.980</td><td>115.86</td>
+                <td>0.967</td><td>108.95</td><td>0.969</td><td>114.39</td>
+                <td>0.970</td><td>110.31</td><td>0.929</td><td>100.63</td>
+                <td><strong>0.962</strong></td><td><strong>106.43 ↑10.6%</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
