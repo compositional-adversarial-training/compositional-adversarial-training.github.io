@@ -762,3 +762,91 @@
             </tbody>
           </table>
         </div>
+
+        <!-- Autoregressive results -->
+        <h3 class="title is-4 section-heading">Autoregressive Watermarking</h3>
+        <div class="content">
+          <p>
+            We evaluate CAT in the autoregressive image-generation setting using the WMAR framework on
+            Taming and RAR-XL generators. Robustness is measured via TPR@FPR=1% under no attack, value
+            perturbations, geometric perturbations, adversarial purification, and neural compression.
+          </p>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <h4 class="title is-5">Taming</h4>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>None</th><th>Value</th><th>Geometric</th>
+                    <th>Adv. Purif.</th><th>Neural Comp.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>BASE</td><td>1.00</td><td>0.26</td><td style="color:#c0392b; font-weight:bold;">0.01</td><td>0.69</td><td>0.71</td></tr>
+                  <tr><td>Random Aug.</td><td>1.00</td><td>0.94</td><td style="color:#c0392b; font-weight:bold;">0.38</td><td>0.92</td><td>0.90</td></tr>
+                  <tr><td>Random Aug.+Sync</td><td>0.99</td><td>0.90</td><td>0.74</td><td>0.92</td><td>0.89</td></tr>
+                  <tr class="cat-row"><td>CAT</td><td>1.00</td><td>0.94</td><td>0.52</td><td>0.89</td><td>0.87</td></tr>
+                  <tr class="cat-row"><td>CAT+Sync</td><td>0.99</td><td>0.89</td><td><strong>0.71</strong></td><td>0.89</td><td>0.87</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="column">
+            <h4 class="title is-5">RAR-XL</h4>
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>None</th><th>Value</th><th>Geometric</th>
+                    <th>Adv. Purif.</th><th>Neural Comp.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>BASE</td><td>1.00</td><td>0.53</td><td style="color:#c0392b; font-weight:bold;">0.04</td><td>0.63</td><td>0.77</td></tr>
+                  <tr><td>Random Aug.</td><td>0.99</td><td>0.97</td><td style="color:#c0392b; font-weight:bold;">0.25</td><td>1.00</td><td>1.00</td></tr>
+                  <tr><td>Random Aug.+Sync</td><td>0.99</td><td>0.95</td><td style="color:#c0392b; font-weight:bold;">0.38</td><td>1.00</td><td>1.00</td></tr>
+                  <tr class="cat-row"><td>CAT</td><td>1.00</td><td>0.92</td><td style="color:#c0392b; font-weight:bold;">0.35</td><td>0.99</td><td>0.98</td></tr>
+                  <tr class="cat-row"><td>CAT+Sync</td><td>1.00</td><td>0.86</td><td><strong>0.72</strong></td><td>0.99</td><td>0.97</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <p class="figure-caption-shared" style="margin-bottom: 1.5rem;">
+          TPR@FPR=1% — higher is better. Values below 0.50 indicate failed detection.
+        </p>
+
+        <div class="columns">
+          <div class="column has-text-centered">
+            <img src="./static/images/taming_robustness.png"
+                 alt="Taming: continuous attack sweeps" style="max-width: 100%;">
+            <p class="figure-caption">(a) Taming: continuous attack sweeps</p>
+          </div>
+          <div class="column has-text-centered">
+            <img src="./static/images/rar_robustness.png"
+                 alt="RAR-XL: continuous attack sweeps" style="max-width: 100%;">
+            <p class="figure-caption">(b) RAR-XL: continuous attack sweeps</p>
+          </div>
+        </div>
+        <div class="columns" style="margin-top: 1rem;">
+          <div class="column has-text-centered">
+            <img src="./static/images/taming_auc.png"
+                 alt="Taming: ROC curves" style="max-width: 100%;">
+            <p class="figure-caption">(c) Taming: ROC curves</p>
+          </div>
+          <div class="column has-text-centered">
+            <img src="./static/images/rar_auc.png"
+                 alt="RAR-XL: ROC curves" style="max-width: 100%;">
+            <p class="figure-caption">(d) RAR-XL: ROC curves</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
