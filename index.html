@@ -158,3 +158,62 @@
     </div>
   </div>
 </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+
+        <h3 class="title is-4">Problem Formulation</h3>
+        <div class="content has-text-justified">
+          <p>
+            Given a watermarked image, we seek parameters for an embedder E<sub>θ</sub> and extractor D<sub>ψ</sub>
+            that minimize message recovery error under worst-case compositional attacks. This yields a min-max objective:
+            the watermark model minimizes message loss while a learned adversary A<sub>φ</sub> maximizes it over a
+            structured library of realistic, differentiable attack families — covering value distortions, compression
+            artifacts, and geometric transformations.
+          </p>
+        </div>
+
+        <h3 class="title is-4">Sequential Attack Generator</h3>
+        <div class="content has-text-justified">
+          <p>
+            The adversary instantiates as a controller over a library of <em>K</em> differentiable attack primitives.
+            Starting from the watermarked image, it applies attacks sequentially for <em>T</em> steps, where each
+            step's choice depends on the intermediate image produced by all previous steps. This lets the adversary
+            discover order-sensitive compositions (e.g., blur → compression, resize → color distortion) that random
+            augmentation rarely encounters. A <strong>frozen DINOv2 ViT-S/16 backbone</strong> extracts visual
+            features at each step, and a lightweight <strong>GRU</strong> tracks the attack history to inform the
+            next selection. A two-layer MLP maps the GRU hidden state to logits over attack families.
+          </p>
+        </div>
+
+        <h3 class="title is-4">Differentiable Attack Selection</h3>
+        <div class="content has-text-justified">
+          <p>
+            Discrete attack selection is made differentiable via a <strong>straight-through Gumbel-Softmax
+            relaxation</strong>: the forward pass uses a one-hot sample (selecting one attack), while the backward
+            pass uses the continuous relaxation so that gradients flow through the attack choice. All <em>K</em>
+            primitives are evaluated in parallel and their outputs are combined as a weighted sum — enabling
+            end-to-end training without a separate inner optimization loop.
+          </p>
+        </div>
+
+        <h3 class="title is-4">Entropy Regularization and Training Efficiency</h3>
+        <div class="content has-text-justified">
+          <p>
+            Without constraints, the adversary collapses to a single maximally destructive attack. An
+            <strong>entropy bonus</strong> H(π<sub>φ</sub>) added to the adversary objective keeps the attack
+            policy diverse throughout training, prevents premature over-specialization, and improves robustness
+            beyond a single dominant failure mode. Because the adversary shares the watermark model's computational
+            graph, no separate inner-loop optimization is needed — the adversary contributes only <strong>800K
+            trainable parameters</strong> and <strong>20–30% additional training overhead</strong>, while leaving
+            inference-time behavior entirely unchanged.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
