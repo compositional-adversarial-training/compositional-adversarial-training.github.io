@@ -115,3 +115,46 @@
     </div>
   </div>
 </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Robust watermarking is typically trained with random post-processing augmentation, but random
+            sampling under-covers the combinatorial space of realistic attack pipelines and rarely encounters the
+            rare compositions that actually break detection. This leads to unstable training and poor sample
+            efficiency. We instead formulate watermark robustness as a min-max problem over a structured space
+            of compositional transformations. We propose <strong>Compositional Adversarial Training (CAT)</strong>,
+            a plug-in framework that learns a sequential differentiable adversary that observes the current
+            watermarked image and selects an attack family at each step to maximally disrupt message recovery.
+            CAT combines a straight-through Gumbel-Softmax attack selection with entropy regularization, allowing
+            the backward pass to be end-to-end differentiable and aggregate gradient information across attack
+            families, yielding faster, smoother convergence without collapsing to a single attack mode.
+            We evaluate CAT on post-generation watermarks VideoSeal 0.0, VideoSeal 1.0, and PixelSeal and
+            in-generation WMAR under both single-step and two-step attack suites, on in-distribution and multiple
+            out-of-distribution image and video benchmarks. CAT consistently outperforms random-augmentation
+            baselines trained with the same augmentation budget, with the largest gains on hard composed attacks
+            and OOD evaluations; improving overall watermark capacity by up to <strong>63.5%</strong> in the
+            single-step attack setting and <strong>13.0%</strong> in the compositional setting. In the autoregressive
+            setting, CAT improves the TPR@FPR=1% by <strong>12%</strong> on average over random training on
+            difficult geometric transformations.
+          </p>
+        </div>
+        <figure class="image" style="margin-top: 2rem;">
+          <img src="./static/images/cat_overview-1.png"
+               alt="Conceptual overview of the CAT training pipeline">
+        </figure>
+        <p class="figure-caption" style="margin-top: 0.75rem;">
+          Overview of the CAT training pipeline. The embedder writes message <em>m</em> into image <em>x</em>;
+          the sequential adversarial augmenter repeatedly observes the current image, selects an attack family
+          via straight-through Gumbel-Softmax, and applies differentiable attacks; the extractor recovers the
+          message and the message loss drives both watermark and adversary updates. Entropy regularization keeps
+          the attack policy diverse.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
